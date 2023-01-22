@@ -1,6 +1,5 @@
 #pragma once
-#define MAX_SIZE 5
-#define NULL 0
+
 using namespace std;
 
 

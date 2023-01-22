@@ -1,5 +1,7 @@
 #include "Stack.h"
 #include <iostream>
+#define MAX_SIZE 5
+#define NULL 0
 
 Stack::Stack() : size(5), top(-1) // 멤버 이니셜라이저
 {
