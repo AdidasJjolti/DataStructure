@@ -14,6 +14,9 @@ int x;
 stack<int> st;
 queue<int> qu;
 
+void Swap(int a, int b);
+void Swap(int* a, int* b);
+
 int main()
 {
 #pragma region Stack
@@ -62,7 +65,6 @@ int main()
 	//cout << "'-----------------" << endl;
 
 #pragma endregion
-
 
 #pragma region Queue
 
@@ -127,7 +129,7 @@ int main()
 
 #pragma region Deque
 
-	Deque deque;
+	/*Deque deque;
 	deque.PopBack();
 	deque.PopFront();
 	deque.PushFront(1);
@@ -139,10 +141,48 @@ int main()
 	deque.PrintDeque();
 	deque.PopBack();
 	deque.PopBack();
-	deque.PrintDeque();
+	deque.PrintDeque();*/
 
 #pragma endregion
 
-	   
+#pragma region Pointer
+
+#pragma endregion
+
+	int* p1;
+	int num1 = 10;
+	int num2;
+	num2 = 20;
+
+	p1 = &num1;
+	int* p2 = &num2;
+
+	printf("before : %d, %d\n", num1, num2);
+	Swap(num1, num2);
+	printf("after : %d, %d\n\n", num1, num2);
+
+	printf("before : %d, %d\n", *p1, *p2);
+	Swap(p1, p2);
+	printf("after : %d, %d\n\n", *p1, *p2);
+
+	printf("before : %d, %d\n", num1, num2);
+	Swap(&num1, &num2);
+	printf("after : %d, %d\n\n", num1, num2);
+
 	return 0;
+}
+
+void Swap(int a, int b)
+{
+	int temp = a;
+	a = b;
+	b = temp;
+}
+
+void Swap(int* a, int* b)
+{
+	int temp = *a;
+	//int* temp2 = a;
+	*a = *b;
+	*b = temp;
 }
