@@ -38,13 +38,13 @@ void LinkedList::Add(int x)
 
 	temp->next = newNode;
 
-	count++;
+	_list._count++;
 
 }
 
 void LinkedList::Insert(int index, int x)
 {
-	if (index >= count || index < 0)
+	if (index >= _list._count || index < 0)
 	{
 		return;
 	}
@@ -71,7 +71,7 @@ void LinkedList::Insert(int index, int x)
 
 void LinkedList::Delete(int index)
 {
-	if (count <= index || index < 0)
+	if (_list._count <= index || index < 0)
 	{
 		return;
 	}

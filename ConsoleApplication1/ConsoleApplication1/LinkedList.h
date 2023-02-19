@@ -10,6 +10,15 @@ struct Node
 class LinkedList
 {
 public:
+
+	struct SinglyLinkeList
+	{
+		Node* _head;
+		int _count;
+	};
+
+	SinglyLinkeList _list;
+
 	Node* _head = nullptr;
 
 	Node* CreateNode();
