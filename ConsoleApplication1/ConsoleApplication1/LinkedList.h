@@ -1,4 +1,6 @@
 #pragma once
+#include <list>
+#include <algorithm>
 using namespace std;
 
 struct Node
@@ -26,5 +28,8 @@ public:
 	void Insert(int index, int x);
 	void Delete(int index);
 	bool IsEmpty();
+	int FindIndex(int x);
+	bool Contains(int x);
+	void Reverse();
+	list<int> GetRange(int index, int range);
 };
-

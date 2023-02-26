@@ -92,3 +92,73 @@ bool LinkedList::IsEmpty()
 {
 	return (_head->next == nullptr);
 }
+
+int LinkedList::FindIndex(int x)
+{
+	int index = 0;
+	Node* temp = _head->next;
+	for (int i = 0; i < _list._count; i++)
+	{
+		if (temp->data == x)
+		{
+			break;
+			return index;
+		}
+		else
+		{
+			temp = temp->next;
+			index++;
+		}
+	}
+	return -1;
+}
+
+bool LinkedList::Contains(int x)
+{
+	bool isFound = false;
+	Node* temp = _head->next;
+	for (int i = 0; i < _list._count; i++)
+	{
+		if (temp->data == x)
+		{
+			isFound = true;
+			break;
+		}
+		else
+		{
+			temp = temp->next;
+		}
+	}
+	return isFound;
+}
+
+void LinkedList::Reverse()
+{
+	Node* curr = _head;
+	Node* prev = NULL;
+	Node* next = NULL;
+
+	while (curr->next != NULL)
+	{
+		next->next = curr->next->next;
+		curr->next->next = prev->next;
+		prev->next = curr->next;
+		curr->next = next->next;
+	}
+}
+
+list<int> LinkedList::GetRange(int index, int range)
+{
+	Node* temp = _head->next;
+	for (int i = 0; i < index; i++)
+	{
+		temp = temp->next;
+	}
+	list<int> newList = list<int>();
+	for (int i = 0; i < min(range, _list._count - index + 1); i++)
+	{
+		newList.push_back(temp->data);
+		temp = temp->next;
+	}
+	return newList;
+}
