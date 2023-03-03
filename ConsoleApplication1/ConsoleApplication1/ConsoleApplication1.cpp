@@ -2,8 +2,10 @@
 #include "Stack.h"
 #include "Queue.h"
 #include "Deque.h"
+#include "LinkedList.h"
 #include<stack>
 #include<queue>
+#include<list>
 
 #define MAX_SIZE 5
 #define NULL 0
@@ -146,28 +148,45 @@ int main()
 #pragma endregion
 
 #pragma region Pointer
+	//int* p1;
+	//int num1 = 10;
+	//int num2;
+	//num2 = 20;
+
+	//p1 = &num1;
+	//int* p2 = &num2;
+
+	//printf("before : %d, %d\n", num1, num2);
+	//Swap(num1, num2);
+	//printf("after : %d, %d\n\n", num1, num2);
+
+	//printf("before : %d, %d\n", *p1, *p2);
+	//Swap(p1, p2);
+	//printf("after : %d, %d\n\n", *p1, *p2);
+
+	//printf("before : %d, %d\n", num1, num2);
+	//Swap(&num1, &num2);
+	//printf("after : %d, %d\n\n", num1, num2);
+#pragma endregion
+
+#pragma region LinkedList
 
 #pragma endregion
 
-	int* p1;
-	int num1 = 10;
-	int num2;
-	num2 = 20;
-
-	p1 = &num1;
-	int* p2 = &num2;
-
-	printf("before : %d, %d\n", num1, num2);
-	Swap(num1, num2);
-	printf("after : %d, %d\n\n", num1, num2);
-
-	printf("before : %d, %d\n", *p1, *p2);
-	Swap(p1, p2);
-	printf("after : %d, %d\n\n", *p1, *p2);
-
-	printf("before : %d, %d\n", num1, num2);
-	Swap(&num1, &num2);
-	printf("after : %d, %d\n\n", num1, num2);
+	LinkedList _list;
+	_list.Add(1);
+	_list.Add(2);
+	_list.Add(3);
+	_list.PrintList();
+	_list.FindIndex(1);
+	_list.Contains(3);
+	_list.PrintList();
+	_list.Reverse();
+	_list.PrintList();
+	_list.Delete(0);
+	_list.PrintList();
+	_list.Insert(0, 3);
+	_list.PrintList();
 
 	return 0;
 }

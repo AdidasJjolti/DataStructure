@@ -9,20 +9,23 @@ struct Node
 	Node* next;
 };
 
+//struct SinglyLinkedList
+//{
+//	Node* _head;
+//	int _count;
+//};
+
 class LinkedList
 {
 public:
 
-	struct SinglyLinkeList
-	{
-		Node* _head;
-		int _count;
-	};
+	//SinglyLinkedList _list;
+	//Node* _head = nullptr;
 
-	SinglyLinkeList _list;
+	Node* _head;
+	int _count;
 
-	Node* _head = nullptr;
-
+	LinkedList();
 	Node* CreateNode();
 	void Add(int x);
 	void Insert(int index, int x);
@@ -32,4 +35,5 @@ public:
 	bool Contains(int x);
 	void Reverse();
 	list<int> GetRange(int index, int range);
+	void PrintList();
 };

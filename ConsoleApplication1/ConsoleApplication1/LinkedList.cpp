@@ -3,6 +3,12 @@
 using namespace std;
 
 
+LinkedList::LinkedList()
+{
+	_head = nullptr;
+	_count = 0;
+}
+
 Node* LinkedList::CreateNode()
 {
 	Node* temp = new Node();
@@ -19,6 +25,7 @@ Node* LinkedList::CreateNode()
 void LinkedList::Add(int x)
 {
 	Node* newNode = CreateNode();
+	Node* headNode = CreateNode();
 
 	if (newNode == nullptr)
 	{
@@ -29,6 +36,11 @@ void LinkedList::Add(int x)
 	newNode->data = x;
 	newNode->next = nullptr;
 
+	if (_head == nullptr)
+	{
+		_head = headNode;
+	}
+	
 	Node* temp = _head;
 
 	while (temp->next != nullptr)
@@ -38,13 +50,13 @@ void LinkedList::Add(int x)
 
 	temp->next = newNode;
 
-	_list._count++;
+	_count++;
 
 }
 
 void LinkedList::Insert(int index, int x)
 {
-	if (index >= _list._count || index < 0)
+	if (index >= _count || index < 0)
 	{
 		return;
 	}
@@ -67,11 +79,12 @@ void LinkedList::Insert(int index, int x)
 	newNode->data = x;
 	newNode->next = temp->next;
 	temp->next = newNode;
+	_count++;
 }
 
 void LinkedList::Delete(int index)
 {
-	if (_list._count <= index || index < 0)
+	if (_count <= index || index < 0)
 	{
 		return;
 	}
@@ -85,7 +98,8 @@ void LinkedList::Delete(int index)
 
 	Node* target = temp->next;
 	temp->next = target->next;
-	Delete(target->data);
+	delete(target);
+	_count--;
 }
 
 bool LinkedList::IsEmpty()
@@ -97,11 +111,11 @@ int LinkedList::FindIndex(int x)
 {
 	int index = 0;
 	Node* temp = _head->next;
-	for (int i = 0; i < _list._count; i++)
+	for (int i = 0; i < _count; i++)
 	{
 		if (temp->data == x)
 		{
-			break;
+			cout << "Index is " << index << endl;
 			return index;
 		}
 		else
@@ -110,6 +124,7 @@ int LinkedList::FindIndex(int x)
 			index++;
 		}
 	}
+	cout << "Index Not Found"<< endl;
 	return -1;
 }
 
@@ -117,7 +132,7 @@ bool LinkedList::Contains(int x)
 {
 	bool isFound = false;
 	Node* temp = _head->next;
-	for (int i = 0; i < _list._count; i++)
+	for (int i = 0; i < _count; i++)
 	{
 		if (temp->data == x)
 		{
@@ -129,16 +144,24 @@ bool LinkedList::Contains(int x)
 			temp = temp->next;
 		}
 	}
+	if (isFound == false)
+	{
+		cout << x << " Not Found" << endl;
+	}
+	else
+	{
+		cout << x << " is found." << endl;
+	}
 	return isFound;
 }
 
 void LinkedList::Reverse()
 {
 	Node* curr = _head;
-	Node* prev = NULL;
-	Node* next = NULL;
+	Node* prev = _head;
+	Node* next = _head;
 
-	while (curr->next != NULL)
+	while (curr->next != nullptr)
 	{
 		next->next = curr->next->next;
 		curr->next->next = prev->next;
@@ -155,10 +178,24 @@ list<int> LinkedList::GetRange(int index, int range)
 		temp = temp->next;
 	}
 	list<int> newList = list<int>();
-	for (int i = 0; i < min(range, _list._count - index + 1); i++)
+	for (int i = 0; i < min(range, _count - index + 1); i++)
 	{
 		newList.push_back(temp->data);
 		temp = temp->next;
 	}
 	return newList;
+}
+
+void LinkedList::PrintList()
+{
+	cout << "List : ";
+	Node* temp = _head->next;
+
+	for (int i = 0; i < _count; i++)
+	{
+		cout << temp->data << " -> ";
+		temp = temp->next;
+	}
+
+	cout <<"NULL"<< endl;
 }
