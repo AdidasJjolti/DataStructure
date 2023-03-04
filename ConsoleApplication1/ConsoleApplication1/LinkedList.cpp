@@ -157,32 +157,36 @@ bool LinkedList::Contains(int x)
 
 void LinkedList::Reverse()
 {
-	Node* curr = _head;
-	Node* prev = _head;
-	Node* next = _head;
+	Node* curr = _head->next;
+	Node* prev = nullptr;
+	Node* next = _head->next;
 
-	while (curr->next != nullptr)
+	while (curr != nullptr)
 	{
-		next->next = curr->next->next;
-		curr->next->next = prev->next;
-		prev->next = curr->next;
-		curr->next = next->next;
+		next = curr->next;
+		curr->next = prev;
+		prev = curr;
+		curr = next;
 	}
+	_head->next = prev;
 }
 
-list<int> LinkedList::GetRange(int index, int range)
+LinkedList LinkedList::GetRange(int index, int range)
 {
 	Node* temp = _head->next;
 	for (int i = 0; i < index; i++)
 	{
 		temp = temp->next;
 	}
-	list<int> newList = list<int>();
+
+	LinkedList newList;
+
 	for (int i = 0; i < min(range, _count - index + 1); i++)
 	{
-		newList.push_back(temp->data);
+		newList.Add(temp->data);
 		temp = temp->next;
 	}
+
 	return newList;
 }
 

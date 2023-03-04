@@ -185,8 +185,9 @@ int main()
 	_list.PrintList();
 	_list.Delete(0);
 	_list.PrintList();
-	_list.Insert(0, 3);
-	_list.PrintList();
+	LinkedList list = _list.GetRange(0, 1);
+	list.PrintList();
+	_list.GetRange(0, 1).PrintList();
 
 	return 0;
 }

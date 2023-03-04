@@ -34,6 +34,6 @@ public:
 	int FindIndex(int x);
 	bool Contains(int x);
 	void Reverse();
-	list<int> GetRange(int index, int range);
+	LinkedList GetRange(int index, int range);
 	void PrintList();
 };
