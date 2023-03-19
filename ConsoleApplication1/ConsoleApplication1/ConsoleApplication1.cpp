@@ -6,6 +6,7 @@
 #include<stack>
 #include<queue>
 #include<list>
+#include<vector>
 
 #define MAX_SIZE 5
 #define NULL 0
@@ -18,6 +19,13 @@ queue<int> qu;
 
 void Swap(int a, int b);
 void Swap(int* a, int* b);
+
+vector<int> vt;
+vector<int>::iterator it;
+vector<int>* vtptr1;
+vector<int>* vtptr2;
+
+vector<int> vt2(3, 10);   // 10 10 10
 
 int main()
 {
@@ -173,23 +181,54 @@ int main()
 
 #pragma endregion
 
-	LinkedList _list;
-	_list.Add(1);
-	_list.Add(2);
-	_list.Add(3);
-	_list.PrintList();
-	_list.FindIndex(1);
-	_list.Contains(3);
-	_list.PrintList();
-	_list.Reverse();
-	_list.PrintList();
-	_list.Delete(0);
-	_list.PrintList();
-	LinkedList list = _list.GetRange(0, 1);
-	list.PrintList();
-	_list.GetRange(0, 1).PrintList();
+	//LinkedList _list;
+	//_list.Add(1);
+	//_list.Add(2);
+	//_list.Add(3);
+	//_list.PrintList();
+	//_list.FindIndex(1);
+	//_list.Contains(3);
+	//_list.PrintList();
+	//_list.Reverse();
+	//_list.PrintList();
+	//_list.Delete(0);
+	//_list.PrintList();
+	//LinkedList list = _list.GetRange(0, 1);
+	//list.PrintList();
+	//_list.GetRange(0, 1).PrintList();
 
-	return 0;
+vtptr1 = &vt;
+
+vt.emplace_back(1);
+vt.emplace_back(2);
+vt.emplace_back(3);
+vt.emplace_back(4);
+
+for (int i = 0; i < vt.size(); i++)
+{
+	cout << vt[i] << " ";
+}
+
+cout << endl << "vtptr1 : " << vtptr1<< endl;
+
+
+it = vt.begin();
+it = vt.insert(it, 5);
+
+vtptr2 = &vt;
+cout << endl << "vtptr2 : " << vtptr2 << endl;
+
+cout << "vt2 capacity with 3 elements is : " << vt2.capacity() << endl;
+
+for (int i = 0; i < 20; i++)
+{
+	vt2.emplace_back(1);
+	cout << "vt2 capacity after adding an element is : " << vt2.capacity() << endl;
+	i++;
+}
+
+
+return 0;
 }
 
 void Swap(int a, int b)
